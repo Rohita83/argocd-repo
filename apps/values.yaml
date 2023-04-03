@@ -13,3 +13,4 @@ metadata:
 helloworld_app:
   label_from_app: applabel
   label_from_cluster: clusterlabelFromApp
+  replicas: 1
