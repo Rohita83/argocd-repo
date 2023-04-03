@@ -2,20 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: development
-  namespace: argocd
 spec:
   generators:
-  - list:
-      elements:
-        - namespace: argocd
   - git:
       files:
       - path: configurations/development/cluster-config.yaml
       repoURL: https://github.com/Rohita83/argocd-repo
-      revision: configuration     
+      revision: configuration
   template:
     metadata:
-      name: 'argocd-nginxapp-dev'
+      name: '{{cluster.dev_project_name}}'
     spec:
       project: psl-argoproj-resources
       destination:
@@ -24,16 +20,13 @@ spec:
       source:
         path: apps
         plugin:
+          name: argocd-vault-plugin-helm-custom        
           env:
           - name: HELM_VALUES
             value: --values values.yaml
           - name: HELM_ARGS
             value: >-
-              --set helloworld_app.resources.requests.memory=128Mi
-              --set helloworld_app.resources.requests.cpu=100m
-              --set helloworld_app.resources.limits.memory=256Mi
-              --set helloworld_app.resources.limits.cpu=500m
-          name: argocd-vault-plugin-helm-custom
+              --set helloworld_app.label_from_cluster={{helloworld_app.label_from_cluster}}
         repoURL: https://github.com/Rohita83/argocd-repo
         targetRevision: code
       syncPolicy:
