@@ -27,6 +27,7 @@ spec:
           - name: HELM_ARGS
             value: >-
               --set helloworld_app.label_from_cluster={{helloworld_app.label_from_cluster}}
+              --set helloworld_app.replicas={{helloworld_app.replicas}}
         repoURL: https://github.com/Rohita83/argocd-repo
         targetRevision: code
       syncPolicy:
