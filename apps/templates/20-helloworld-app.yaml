@@ -21,6 +21,7 @@ spec:
         value: >-
           --set helloworld_app.label_from_app={{.Values.helloworld_app.label_from_app}}
           --set helloworld_app.label_from_cluster={{.Values.helloworld_app.label_from_cluster}}
+          --set helloworld_app.replicas={{.Values.helloworld_app.replicas}}
     path: resources/helloworld
     repoURL: {{ .Values.repoURL }}
     targetRevision: {{ .Values.targetRevision }}
