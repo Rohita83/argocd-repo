@@ -26,7 +26,9 @@ function echoIt() {
 function updateTargetRevisionInAppset() {
     mkdir -p gitSpace
     cd gitSpace
-    git clone --branch "${configurationBranch}" "https://${GIT_TOKEN:?}@github.com/${TRAVIS_REPO_SLUG}.git"
+    # git clone --branch "${configurationBranch}" "https://${GIT_TOKEN:?}@github.com/${TRAVIS_REPO_SLUG}.git"
+    git clone --branch "${configurationBranch}" "https://github.com/${TRAVIS_REPO_SLUG}.git"
+
     cd ./*
     # gitlog=$(git log --pretty=oneline "${TRAVIS_COMMIT}~1..${TRAVIS_COMMIT}")
     gitlog=git log --format="%H" -n 1
