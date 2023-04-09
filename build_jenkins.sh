@@ -24,7 +24,7 @@ function echoIt() {
 }
 
 function updateTargetRevisionInAppset() {
-    mkdir gitSpace
+    mkdir -p gitSpace
     cd gitSpace
     git clone --branch "${configurationBranch}" "https://${GIT_TOKEN:?}@github.com/${TRAVIS_REPO_SLUG}.git"
     cd ./*
