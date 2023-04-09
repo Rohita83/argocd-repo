@@ -31,7 +31,7 @@ function updateTargetRevisionInAppset() {
 
     cd ./*
     # gitlog=$(git log --pretty=oneline "${TRAVIS_COMMIT}~1..${TRAVIS_COMMIT}")
-    gitlog=git log --format="%H" -n 1
+    gitlog=$(git log --format="%H" -n 1)
     echo "gitlog = $gitlog"
     TRAVIS_COMMIT=gitlog
     echo "TRAVIS_COMMIT = $TRAVIS_COMMIT"
