@@ -24,7 +24,14 @@ function echoIt() {
 }
 
 function updateTargetRevisionInAppset() {
-    mkdir -p gitSpace
+
+    dir=gitSpace
+    if [[ ! -e $dir ]]; then
+      mkdir $dir
+    elif [[ ! -d $dir ]]; then
+        echo "$dir already exists ..deleting  it" 1>&2
+        rm -rf $dir
+    fi
     cd gitSpace
     # git clone --branch "${configurationBranch}" "https://${GIT_TOKEN:?}@github.com/${TRAVIS_REPO_SLUG}.git"
     git clone --branch "${configurationBranch}" "https://github.com/${TRAVIS_REPO_SLUG}.git"
