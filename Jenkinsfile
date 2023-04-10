@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                git branch: "code" ,credentialsId: '',url: "https://github.com/Rohita83/argocd-repo"
+                git branch: "code" ,credentialsId: 'GIT_TOKEN',url: "https://github.com/Rohita83/argocd-repo"
             }
         }
         stage('CODE') {
