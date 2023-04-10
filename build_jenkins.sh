@@ -28,7 +28,7 @@ function updateTargetRevisionInAppset() {
     dir=gitSpace
     if [[ ! -e $dir ]]; then
       mkdir $dir
-    elif [[ ! -d $dir ]]; then
+    elif [[ -d $dir ]]; then
       echo "$dir already exists...deleting it" 1>&2
       rm -rf $dir
     fi
