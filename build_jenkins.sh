@@ -7,7 +7,6 @@ CLUSTER_CONFIG_FILES=configurations/development/cluster-config.yaml
 CODE_BRANCH=code
 CONFIGURATION_BRANCH=configuration
 DEBUG=true
-# TRAVIS_REPO_SLUG=Rohita83/argocd-repo
 
 function initGlobal() {
     export cluster_config_file appset_files codeBranch configurationBranch
@@ -38,8 +37,6 @@ function updateTargetRevisionInAppset() {
     echo "gitlog = $gitlog"
 
     git clone --branch "${configurationBranch}" "https://${GIT_TOKEN:?}@github.com/${TRAVIS_REPO_SLUG}.git"
-    # git clone --branch "${configurationBranch}" "https://github.com/${TRAVIS_REPO_SLUG}.git"
-
     cd ./*
     # gitlog=$(git log --pretty=oneline "${TRAVIS_COMMIT}~1..${TRAVIS_COMMIT}")
 
