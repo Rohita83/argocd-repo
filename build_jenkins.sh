@@ -39,8 +39,6 @@ function updateTargetRevisionInAppset() {
     git clone --branch "${configurationBranch}" "https://${GIT_TOKEN:?}@github.com/${TRAVIS_REPO_SLUG}.git"
     cd ./*
 
-
-
     TRAVIS_COMMIT=${gitlog}
     echo "TRAVIS_COMMIT = $TRAVIS_COMMIT"
     for appset_file in $appset_files; do
