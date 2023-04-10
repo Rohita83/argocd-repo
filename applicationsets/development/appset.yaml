@@ -29,7 +29,7 @@ spec:
               --set helloworld_app.label_from_cluster={{helloworld_app.label_from_cluster}}
               --set helloworld_app.replicas={{helloworld_app.replicas}}
         repoURL: https://github.com/Rohita83/argocd-repo
-        targetRevision: 3eacaf92d7347e1d18631b437828f1c2155f148a
+        targetRevision: d828f27eac64893ad43c60d98a411133c9a90841
       syncPolicy:
         automated:
           prune: true
