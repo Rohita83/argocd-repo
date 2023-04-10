@@ -33,14 +33,14 @@ function updateTargetRevisionInAppset() {
       rm -rf $dir/*
     fi
     cd gitSpace
-    # git clone --branch "${configurationBranch}" "https://${GIT_TOKEN:?}@github.com/${TRAVIS_REPO_SLUG}.git"
-    git clone --branch "${configurationBranch}" "https://github.com/${TRAVIS_REPO_SLUG}.git"
+    git clone --branch "${configurationBranch}" "https://${GIT_TOKEN:?}@github.com/${TRAVIS_REPO_SLUG}.git"
+    # git clone --branch "${configurationBranch}" "https://github.com/${TRAVIS_REPO_SLUG}.git"
 
     cd ./*
     # gitlog=$(git log --pretty=oneline "${TRAVIS_COMMIT}~1..${TRAVIS_COMMIT}")
     gitlog=$(git log --format="%H" -n 1)
     echo "gitlog = $gitlog"
-    TRAVIS_COMMIT=gitlog
+    TRAVIS_COMMIT=${gitlog}
     echo "TRAVIS_COMMIT = $TRAVIS_COMMIT"
     for appset_file in $appset_files; do
         echo "updating ${appset_file}"
